@@ -7,3 +7,5 @@
   - name: install apps
     package:
       name: htop
+      name: ssh
+      name: firefox-esr
