@@ -5,10 +5,13 @@
   become_user: root
 
   tasks:
-  - name: update package
+  - name: update apt repo cache
+    apt:
+      update_cache: yes
+      
+  - name: update apt package
     apt:
       available: yes
-      update_cache: yes
       upgrade: yes
       
   - name: install prerequsitist    
@@ -25,6 +28,10 @@
     apt_repository:
       repo: deb https://download.docker.com/linux/debian buster stable
       state: present
+
+  - name: update apt repo cache
+    apt:
+      update_cache: yes
 
   - name: install apps
     apt:
