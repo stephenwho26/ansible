@@ -2,8 +2,12 @@
 - hosts: localhost
   connection: local
   become: true
+  become_user: root
 
   tasks:
+  - name: set prerequisite
+    shell: "curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -"
+    shell: "add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable""
   - name: install apps
     package:
       name: htop
@@ -14,10 +18,6 @@
       name: curl
       name: gnupg-agent
       name: software-properties-common
-  - name: install docker
-    shell: curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-    package:  
       name: docker-ce
       name: docker-ce-cli
       name: containerd.io
