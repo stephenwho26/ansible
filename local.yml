@@ -7,7 +7,9 @@
   tasks:
   - name: set prerequisite
     shell: "curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -"
-    shell: 'add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"'
+    ansible.builtin.apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) 
+      state: stable
   - name: install apps
     package:
       name: htop
