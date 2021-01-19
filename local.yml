@@ -9,3 +9,6 @@
       name: htop
       name: ssh
       name: firefox-esr
+      name: docker-ce
+      name: docker-ce-cli
+      name: containerd.io
