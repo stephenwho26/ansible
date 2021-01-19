@@ -5,9 +5,16 @@
   become_user: root
 
   tasks:
+  - name: update package
+    apt:
+      available: yes
+      update_cache: yes
+      upgrade: yes
+      
   - name: install prerequsitist    
-    apt: name={{ item }} state=latest update_cache=yes
-    loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'gnupg-agent', 'software-properties-common']
+    apt:
+      name: pt-transport-https,ca-certificates,curl,gnupg-agent,software-properties-common
+      state: latest
 
   - name: add docker gpg key
     apt_key:
@@ -20,10 +27,5 @@
       state: present
 
   - name: install apps
-    apt: update_cache=yes
-      name: htop
-      name: ssh
-      name: firefox-esr
-      name: docker-ce
-      name: docker-ce-cli
-      name: containerd.io
+    apt:
+      name: htop,ssh,firefox-esr,docker-ce,docker-ce-cli,containerd.io
