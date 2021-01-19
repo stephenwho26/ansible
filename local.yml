@@ -10,12 +10,12 @@
     loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'gnupg-agent', 'software-properties-common']
 
   - name: add docker gpg key
-    ansible.builtin.apt_key:
+    apt_key:
       url: https://download.docker.com/linux/debian/gpg
       state: present
 
   - name: add docker repo
-    ansible.builtin.apt_repository:
+    apt_repository:
       repo: deb https://download.docker.com/linux/debian buster stable
       state: present
 
