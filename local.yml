@@ -20,7 +20,7 @@
       state: present
 
   - name: install apps
-    package:
+    apt: update_cache=yes
       name: htop
       name: ssh
       name: firefox-esr
