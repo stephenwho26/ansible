@@ -11,7 +11,7 @@
       
   - name: install prerequsitist    
     apt:
-      name: pt-transport-https,ca-certificates,curl,gnupg-agent,software-properties-common
+      name: apt-transport-https,ca-certificates,curl,gnupg-agent,software-properties-common
       state: latest
 
   - name: add docker gpg key
